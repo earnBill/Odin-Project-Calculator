@@ -1,0 +1,45 @@
+* {
+  box-sizing: border-box;
+}
+
+
+.container {
+  margin: auto;
+  height: 75vh;
+  width: 300px;
+  border: 1px solid black;
+
+  display: flex;
+  flex-direction: column;
+
+  background-color: gray;
+  border-radius: 10px;
+  
+}
+
+.screen {  
+    height: 50px;
+    background-color: white;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 10px;
+  }
+
+.buttons {
+   flex: 1;
+   display: flex;
+   flex-direction: column;
+}
+
+.row {
+  flex: 1;
+  display: flex;
+}
+
+button {
+    flex: 1;
+    margin: 10px;
+    border: 1px solid black;
+    border-radius: 5px;
+
+}
