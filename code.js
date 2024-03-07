@@ -5,23 +5,46 @@ let operant;
 const clearBtn = document.querySelector('.clear');
 const deleteBtn = document.querySelector('.delete');
 const screen = document.querySelector('.screen');
+const equalBtn = document.querySelector('#equal');
+
 let buttons = document.querySelectorAll('.calcBtns');
+let screenText = screen.textContent;
 
-
-buttons.forEach((button) => {
-    button.textContent = button.dataset.name;
+document.addEventListener('DOMContentLoaded', () => { 
+  buttons.forEach((button) => {
+  button.textContent = button.dataset.name;
+  })
 });
 
 
 clearBtn.addEventListener('click', () => {
   console.log('clear');
   clear();
+  screenText = screen.textContent;
+  console.log(screenText);
 })
 
 deleteBtn.addEventListener('click', () => {
   console.log('delete');
   screen.textContent =  deleted();
+  screenText = screen.textContent;
+  console.log(screenText);
 })
+
+equalBtn.addEventListener('click',() => {
+  let text = screenText.split(/[-+/*=]/);
+  console.log(text);
+  number1 = text[0];
+  number2 = text[1];
+  let text2 = screenText.split(/[1234567890]/);
+  console.log(text2);
+
+  console.log(number1);
+  console.log(number2);
+  console.log(operant);
+});
+
+
 
 function deleted() {
   let screenText = screen.textContent;
@@ -56,13 +79,9 @@ buttons.forEach(function(button) {
   button.addEventListener('click',() =>{
     console.log(button.dataset.name);
     screen.textContent += button.dataset.name; 
+    screenText = screen.textContent;
+    console.log(screenText);
   })
 })
 
 
-console.log(add(15, 11));
-console.log(subtract(15, 11));
-console.log(multiply(15, 11));
-console.log(divide(15, 10));
-
-console.log(buttons[0])
