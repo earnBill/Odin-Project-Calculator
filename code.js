@@ -1,11 +1,13 @@
 let number1;
 let number2;
 let operant;
+let reset = false;
 
 const clearBtn = document.querySelector('.clear');
 const deleteBtn = document.querySelector('.delete');
 const screen = document.querySelector('.screen');
 const equalBtn = document.querySelector('#equal');
+const acts = document.querySelectorAll('.act');
 
 let buttons = document.querySelectorAll('.calcBtns');
 let screenText = screen.textContent;
@@ -16,6 +18,14 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 });
 
+
+acts.forEach(function(act) {
+  act.addEventListener('click',() => {
+    reset = true;
+    number1 = screen.textContent;
+    console.log(number1);
+  })
+})
 
 clearBtn.addEventListener('click', () => {
   console.log('clear');
@@ -31,18 +41,18 @@ deleteBtn.addEventListener('click', () => {
   console.log(screenText);
 })
 
-equalBtn.addEventListener('click',() => {
-  let text = screenText.split(/[-+/*=]/);
-  console.log(text);
-  number1 = text[0];
-  number2 = text[1];
-  let text2 = screenText.split(/[1234567890]/);
-  console.log(text2);
+// equalBtn.addEventListener('click',() => {
+//   let text = screenText.split(/[-+/*=]/);
+//   console.log(text);
+//   number1 = text[0];
+//   number2 = text[1];
+//   let text2 = screenText.split(/[1234567890]/);
+//   console.log(text2);
 
-  console.log(number1);
-  console.log(number2);
-  console.log(operant);
-});
+//   console.log(number1);
+//   console.log(number2);
+//   console.log(operant);
+// });
 
 
 
@@ -77,10 +87,12 @@ function operate(num1, num2, operant) {
 
 buttons.forEach(function(button) {
   button.addEventListener('click',() =>{
-    console.log(button.dataset.name);
+    if (reset === true) {
+      clear();
+    }
     screen.textContent += button.dataset.name; 
     screenText = screen.textContent;
-    console.log(screenText);
+    reset = false;
   })
 })
 
