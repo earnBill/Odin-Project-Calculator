@@ -22,8 +22,10 @@ document.addEventListener('DOMContentLoaded', () => {
 acts.forEach(function(act) {
   act.addEventListener('click',() => {
     reset = true;
-    number1 = screen.textContent;
+    number1 = Number(screen.textContent);
+    operant = act.dataset.name;
     console.log(number1);
+    console.log(operant);
   })
 })
 
@@ -41,18 +43,11 @@ deleteBtn.addEventListener('click', () => {
   console.log(screenText);
 })
 
-// equalBtn.addEventListener('click',() => {
-//   let text = screenText.split(/[-+/*=]/);
-//   console.log(text);
-//   number1 = text[0];
-//   number2 = text[1];
-//   let text2 = screenText.split(/[1234567890]/);
-//   console.log(text2);
-
-//   console.log(number1);
-//   console.log(number2);
-//   console.log(operant);
-// });
+equalBtn.addEventListener('click',() => {
+  number2 = Number(screen.textContent);
+  console.log(number2);
+  operate(number1, number2, operant )  
+});
 
 
 
@@ -82,7 +77,20 @@ function divide(num1, num2) {
 }
 
 function operate(num1, num2, operant) {
-  
+  let result;
+  if (operant === '-') {
+    result = subtract(num1, num2);
+  }
+  else if (operant === '+') {
+    result = add(num1, num2);
+  }
+  else if (operant === '*') {
+    result = multiply(num1, num2);
+  }
+  else if (operant === '/') {
+    result = divide(num1, num2);
+  }
+  screen.textContent = result
 }
 
 buttons.forEach(function(button) {
