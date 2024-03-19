@@ -22,6 +22,16 @@ document.addEventListener('DOMContentLoaded', () => {
 acts.forEach(function(act) {
   act.addEventListener('click',() => {
     reset = true;
+
+    if (operant) {
+      number2 = Number(screen.textContent);
+      console.log(number2);
+      operate(number1, number2, operant);
+      operant = act.dataset.name;
+      console.log(operant);
+      return
+    }
+
     number1 = Number(screen.textContent);
     operant = act.dataset.name;
     console.log(number1);
@@ -33,6 +43,9 @@ clearBtn.addEventListener('click', () => {
   console.log('clear');
   clear();
   screenText = screen.textContent;
+  number1 = 0;
+  number2 = 0;
+  operant = '';
   console.log(screenText);
 })
 
@@ -46,7 +59,8 @@ deleteBtn.addEventListener('click', () => {
 equalBtn.addEventListener('click',() => {
   number2 = Number(screen.textContent);
   console.log(number2);
-  operate(number1, number2, operant )  
+  operate(number1, number2, operant );
+  operant = '';  
 });
 
 
@@ -73,7 +87,7 @@ function multiply(num1, num2) {
 }
 
 function divide(num1, num2) {
-    return num1 / num2;
+  return num1 / num2;
 }
 
 function operate(num1, num2, operant) {
@@ -90,7 +104,10 @@ function operate(num1, num2, operant) {
   else if (operant === '/') {
     result = divide(num1, num2);
   }
+  console.log(result);
+
   screen.textContent = result
+  number1 = result;
 }
 
 buttons.forEach(function(button) {
