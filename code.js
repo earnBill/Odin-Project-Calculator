@@ -64,6 +64,17 @@ equalBtn.addEventListener('click',() => {
 });
 
 
+buttons.forEach(function(button) {
+  button.addEventListener('click',() =>{
+    if (reset === true) {
+      clear();
+    }
+    screen.textContent += button.dataset.name; 
+    screenText = screen.textContent;
+    reset = false;
+  })
+})
+
 
 function deleted() {
   let screenText = screen.textContent;
@@ -110,15 +121,5 @@ function operate(num1, num2, operant) {
   number1 = result;
 }
 
-buttons.forEach(function(button) {
-  button.addEventListener('click',() =>{
-    if (reset === true) {
-      clear();
-    }
-    screen.textContent += button.dataset.name; 
-    screenText = screen.textContent;
-    reset = false;
-  })
-})
 
 

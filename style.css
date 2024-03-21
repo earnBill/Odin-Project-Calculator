@@ -2,6 +2,17 @@
   box-sizing: border-box;
 }
 
+.act {
+  background-color: lightslategray;
+}
+
+.clear, .delete {
+  background-color: lightblue;
+}
+
+.equal {
+  background-color: lightgreen;
+}
 
 .container {
   margin: auto;
@@ -26,6 +37,8 @@
     border-radius: 10px;
     overflow:auto;
     overflow-wrap: break-word;
+    text-align: right;
+    font-weight: 600;
   }
 
 .buttons {
