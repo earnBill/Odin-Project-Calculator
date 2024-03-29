@@ -18,6 +18,17 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 });
 
+document.addEventListener('keyup',(e) => {
+  let num;
+  num = e.key;
+  console.log(typeof(num));
+  if( isFinite(num) || e.key === '.') {
+    screen.textContent += e.key;
+  }
+  else {
+    console.log('Use only numbers');
+  }
+})
 
 acts.forEach(function(act) {
   act.addEventListener('click',() => {
