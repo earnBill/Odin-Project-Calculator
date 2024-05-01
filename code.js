@@ -2,12 +2,14 @@ let number1;
 let number2;
 let operant;
 let reset = false;
+let dot = false;
 
 const clearBtn = document.querySelector('.clear');
 const deleteBtn = document.querySelector('.delete');
 const screen = document.querySelector('.screen');
 const equalBtn = document.querySelector('#equal');
 const acts = document.querySelectorAll('.act');
+const dotButton = document.querySelector('.dot');
 
 let buttons = document.querySelectorAll('.calcBtns');
 let screenText = screen.textContent;
@@ -22,8 +24,14 @@ document.addEventListener('keyup',(e) => {
   let num;
   num = e.key;
   console.log(typeof(num));
-  if( isFinite(num) || e.key === '.') {
+  if( isFinite(num)) {
     screen.textContent += e.key;
+  }
+  else if (e.key === '.') {
+    if (dot === false) {
+      screen.textContent += e.key;
+    }
+    dot = true;
   }
   else {
     console.log('Use only numbers');
@@ -47,6 +55,7 @@ acts.forEach(function(act) {
     operant = act.dataset.name;
     console.log(number1);
     console.log(operant);
+    dot = false;
   })
 })
 
@@ -86,6 +95,13 @@ buttons.forEach(function(button) {
   })
 })
 
+dotButton.addEventListener('click', () => {
+  if (dot === false) {
+    screen.textContent += dotButton.dataset.name;
+    dot = true;
+  }
+  
+})
 
 function deleted() {
   let screenText = screen.textContent;
